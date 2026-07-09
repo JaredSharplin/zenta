@@ -7,20 +7,20 @@ import (
 func TestNewSession(t *testing.T) {
 	s := NewSession()
 
-	if s.Cycles != 3 {
-		t.Errorf("Expected default cycles to be 3, got %d", s.Cycles)
+	if s.Cycles != 4 {
+		t.Errorf("Expected default cycles to be 4, got %d", s.Cycles)
 	}
-	if s.ShowQuote != true {
-		t.Errorf("Expected ShowQuote to be true by default, got %v", s.ShowQuote)
+	if s.ShowQuote {
+		t.Errorf("Expected ShowQuote to be false by default, got %v", s.ShowQuote)
 	}
 	if s.InhaleDur != 4 {
 		t.Errorf("Expected InhaleDur to be 4, got %d", s.InhaleDur)
 	}
-	if s.HoldDur != 4 {
-		t.Errorf("Expected HoldDur to be 4, got %d", s.HoldDur)
+	if s.HoldDur != 7 {
+		t.Errorf("Expected HoldDur to be 7, got %d", s.HoldDur)
 	}
-	if s.ExhaleDur != 4 {
-		t.Errorf("Expected ExhaleDur to be 4, got %d", s.ExhaleDur)
+	if s.ExhaleDur != 8 {
+		t.Errorf("Expected ExhaleDur to be 8, got %d", s.ExhaleDur)
 	}
 	if s.SimpleMode != shouldUseSimpleAnimation() {
 		t.Errorf("Expected SimpleMode to match default from shouldUseSimpleAnimation()")
@@ -37,15 +37,15 @@ func TestParseArgs(t *testing.T) {
 		expectedQuote  bool
 		expectedSimple bool
 	}{
-		{"no args", []string{}, 3, true, defaultSimple},
-		{"quick", []string{"--quick"}, 1, true, defaultSimple},
-		{"extended", []string{"--extended"}, 5, true, defaultSimple},
-		{"silent", []string{"--silent"}, 3, false, defaultSimple},
-		{"simple", []string{"--simple"}, 3, true, true},
-		{"complex", []string{"--complex"}, 3, true, false},
-		{"-q", []string{"-q"}, 1, true, defaultSimple},
-		{"-e", []string{"-e"}, 5, true, defaultSimple},
-		{"-s", []string{"-s"}, 3, false, defaultSimple},
+		{"no args", []string{}, 4, false, defaultSimple},
+		{"quick", []string{"--quick"}, 1, false, defaultSimple},
+		{"extended", []string{"--extended"}, 5, false, defaultSimple},
+		{"silent", []string{"--silent"}, 4, false, defaultSimple},
+		{"simple", []string{"--simple"}, 4, false, true},
+		{"complex", []string{"--complex"}, 4, false, false},
+		{"-q", []string{"-q"}, 1, false, defaultSimple},
+		{"-e", []string{"-e"}, 5, false, defaultSimple},
+		{"-s", []string{"-s"}, 4, false, defaultSimple},
 		{"combo", []string{"--quick", "--silent", "--simple"}, 1, false, true},
 	}
 
