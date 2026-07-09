@@ -46,11 +46,11 @@ func sigexit(s os.Signal) {
 // NewSession creates a new breathing session with default settings
 func NewSession() *Session {
 	return &Session{
-		Cycles:     3,
-		ShowQuote:  true,
+		Cycles:     4,
+		ShowQuote:  false,
 		InhaleDur:  4,
-		HoldDur:    4,
-		ExhaleDur:  4,
+		HoldDur:    7,
+		ExhaleDur:  8,
 		RestDur:    RestDuration,
 		SimpleMode: shouldUseSimpleAnimation(),
 	}
