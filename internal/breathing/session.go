@@ -150,11 +150,6 @@ func (s *Session) drawSimpleBreathingSession() {
 			"●●●●", "●●●○", "●●○○", "●○○○", "○○○○", "○○  ", "○   ",
 		})
 
-		// Rest phase
-		s.drawSimplePhase("🕯️", "Rest in emptiness...", s.HoldDur, []string{
-			"·", "·", "·", "·",
-		})
-
 		// Brief pause between cycles
 		if cycle < s.Cycles {
 			PrintWithPadding("   💫 Feel the rhythm... continuing...")
@@ -216,7 +211,6 @@ func (s *Session) drawContinuousBreathingSession() {
 		{"inhale", "🌬️", s.InhaleDur, "Breathe in gently, let your body expand...", "expand"},
 		{"hold", "✨", s.HoldDur, "Hold softly, feel the fullness...", "full"},
 		{"exhale", "🌸", s.ExhaleDur, "Release slowly, let everything go...", "contract"},
-		{"rest", "🕯️", s.HoldDur, "Rest in the emptiness, be present...", "empty"},
 	}
 
 	// One lung, breathing continuously through all cycles
